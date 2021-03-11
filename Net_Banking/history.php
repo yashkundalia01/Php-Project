@@ -1,12 +1,23 @@
-{% extends 'base.html' %}
+<?php
+  require_once('connections.php');
+  session_start();
+
+$query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
+  $RESULT = $dbhandler -> query($query);
+  $rows = $RESULT->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>History</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-{% block body %}
 
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
     <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
@@ -65,8 +76,8 @@
             Payment
           </button>
           <div class="dropdown-menu">
-              <a class="dropdown-item" href="/accounts/dashboard/beneficiary/{{ client.id }}">Fund Transfer</a>
-              <a class="dropdown-item" href="/accounts/dashboard/history/{{ client.id }}">Transaction History</a>
+              <a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>
+              <a class="dropdown-item" href="history.php">Transaction History</a>
               <a class="dropdown-item" href="#">Recharge</a>
               <a class="dropdown-item" href="#">UPI</a>
             </div>
@@ -118,7 +129,7 @@
             Account
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/accounts/dashboard/changepass/{{ client.id }}">Change password</a>
+            <a class="dropdown-item" href="changepassword.php">Change password</a>
             <?php echo '<a class="dropdown-item" href="logout.php">Logout</a>' ?>
           </div>
         </div>
@@ -137,24 +148,40 @@
                             <th><b>Account_No</b></th>
                             <th><b>Amount</b></th>
                             <th><b>Operation</b></th>
+                            <th><b>Date</b></th>
                         </tr>
                     </thead>
                 </div>
                 <tbody>
-                {% for h in history %}
-                    {% if h.client.id == id %}
-                        <tr>
-                            <td>{{ h.name }}</td>
-                            <td>{{ h.account_no }}</td>
-                            <td>{{ h.amount }}</td>
-                            <td>{% if h.operation == 'c' %}credited{% elif h.operation == 'd' %}debited{% endif %}</td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-                </tbody>
+                <?php 
+                if($rows == null)
+                {
+                echo "<tr>";
+                echo "<td colspan=5 align=center>no transaction done yet...</td>";
+                echo '</tr>';
+                }
+                else{
+                foreach($rows as $row){
+                        echo "<tr>";
+                        echo "<td>".$row['name']."</td>";
+                        echo '<td>'.$row['account_no'].'</td>';
+                        echo '<td>'.$row['amount'].'</td>';
+                        echo '<td>';
+                        if($row['operation'] == 'c' || $row['operation'] == 'C'){
+                        echo "credited";
+                        }
+                        else{
+                        echo "debited";
+                        }
+                        echo '</td>';
+                        echo '<td>'.$row['date'].'</td>';
+                        echo '</tr>';
+                    }
+                    }
+                    ?>
+                </body>
             </table>
         </div>
     </div>
-{% endblock %}
 </body>
 </html>

@@ -1,16 +1,17 @@
 <?php
+session_start();
   require_once('connections.php');
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $query1 = "INSERT INTO beneficiary VALUES(?,?,?,?,?,?)";
     $i = $dbhandler -> prepare($query1);
-    $i->execute(array($_GET['id'], $_POST['ahname'], $_POST['accno'], $_POST['bname'], $_POST['brname'], $_POST['ifsc'])); 
+    $i->execute(array($_SESSION['id'], $_POST['ahname'], $_POST['accno'], $_POST['bname'], $_POST['brname'], $_POST['ifsc'])); 
   }
 
   if (!isset($_COOKIE['password'])){
     header("location:login.php?message=Please enter username and password");
   }else {
-    $query = "SELECT * FROM beneficiary WHERE client_id=".$_GET['id'];
+    $query = "SELECT * FROM beneficiary WHERE client_id=".$_SESSION['id'];
     $RESULT = $dbhandler -> query($query);
   }
 
@@ -80,15 +81,15 @@
       <button class="w3-button w3-teal w3-black" onclick="w3_open()">☰</button>
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <?php echo '<a class="nav-link" href="">Home</a>';?>
+            <a class="nav-link" href="dashboard.php">Home</a>
           </li>
           <div class="dropdown">
             <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
               Payment
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="/accounts/dashboard/beneficiary/{{ client.id }}">Fund Transfer</a>
-                <a class="dropdown-item" href="/accounts/dashboard/history/{{ client.id }}">Transaction History</a>
+                <a class="dropdown-item" href="">Fund Transfer</a>
+                <a class="dropdown-item" href="history.php">Transaction History</a>
                 <a class="dropdown-item" href="#">Recharge</a>
                 <a class="dropdown-item" href="#">UPI</a>
               </div>
@@ -140,14 +141,18 @@
               Account
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/accounts/dashboard/changepass/{{ client.id }}">Change password</a>
-              <?php echo '<a class="dropdown-item" href="logout.php?id='.$_GET['id'].'">Logout</a>' ?>
+              <a class="dropdown-item" href="changepassword.php">Change password</a>
+              <?php echo '<a class="dropdown-item" href="logout.php">Logout</a>' ?>
             </div>
           </div>
         
         </ul>
       </nav>
-
+      <?php if(isset($_GET['msg'])){ ?>
+      <script>
+      alert("<?php echo $_GET['msg'] ?>");
+      </script>
+      <?php } ?>
     <div class="container-fluid">
       <h1 style="text-align: center;"><span class="badge bg-dark">Beneficiary</span></h1>
         <div class="row">
@@ -197,9 +202,9 @@
                     echo ' <p><b>Bank name: '.$bank_name.'</b></p>';
                     echo '<p><b>Branch name: '.$branch_name.'</b></p>';
                     echo '<p><b>Bank IFSC code: '.$bank_ifsc_code.'</b></p>';
-                    echo ' <a class="btn btn-primary" href="transaction.php?id='.$_GET['id'].'&account_no='.$account_no.'">Make Transaction</a>';
-                    echo ' <a class="btn btn-success" href="updatebenificiary.php?id='.$_GET['id'].'&account_no='.$account_no.'">Update</a>';
-                    echo ' <a class="btn btn-danger" href="deletebeneficiary.php?id='.$_GET['id'].'&account_no='.$account_no.'">Delete</a>';
+                    echo ' <a class="btn btn-primary" href="transaction.php?account_no='.$account_no.'">Make Transaction</a>';
+                    echo ' <a class="btn btn-success" href="updatebenificiary.php?account_no='.$account_no.'">Update</a>';
+                    echo ' <a class="btn btn-danger" href="deletebeneficiary.php?account_no='.$account_no.'">Delete</a>';
                     echo '</div>';
                     echo '</div>';
                     echo '<br>';

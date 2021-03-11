@@ -1,12 +1,36 @@
-{% extends 'base.html' %}
+<?php 
+  require_once('connections.php');
+  session_start();
+  
+
+  if($_SERVER['REQUEST_METHOD'] === 'POST')
+  {
+  $query = "SELECT * FROM client WHERE id=".$_SESSION['id'];
+  $RESULT = $dbhandler -> query($query);
+  $row = $RESULT->fetch();
+  if($row['password'] != $_POST['op'])
+  {
+        header('location:changepassword.php?msg=old password does not match..');
+  }
+  else{
+    $query = "UPDATE client SET Password='".$_POST['np']."' WHERE id=".$_SESSION['id'];
+    $q=$dbhandler -> query($query); 
+    header('location:login.php?message=password changed successfully');
+  }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Change Password</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    {% block body %}
     <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
         <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
         <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
@@ -64,8 +88,8 @@
                 Payment
               </button>
               <div class="dropdown-menu">
-                  <a class="dropdown-item" href="/accounts/dashboard/beneficiary/{{ client.id }}">Fund Transfer</a>
-                  <a class="dropdown-item" href="/accounts/dashboard/history/{{ client.id }}">Transaction History</a>
+                  <a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>
+              <a class="dropdown-item" href="history.php">Transaction History</a>
                   <a class="dropdown-item" href="#">Recharge</a>
                   <a class="dropdown-item" href="#">UPI</a>
                 </div>
@@ -128,19 +152,20 @@
         <div class="container-fluid">
             <h1 style="text-align: center;"><span class="badge bg-dark">Change Password</span></h1>
         <div class="row">
-            <div class="col-md-4" style="position: absolute; left:32% ;">
-                {% for message in messages %}
-                    {{message}}<br><br>
-                {% endfor %}
-                <br><br><br>
-                <form action="/accounts/dashboard/changepass/{{ client.id }}" method="POST" class="p-3 shadow">
-                    {% csrf_token %}
+            <div class="col-md-4" style="position: absolute; left:32% ;"><br><br>
+                <?php if(isset($_GET['msg']))
+                {
+                    echo $_GET['msg']."<br><br>";
+                }
+                ?>
+                <br>
+                <form method="POST" class="p-3 shadow">
                     <div class="form-group">
-                        Old password: <input class="form-control" type="password" required name='old password' placeholder="Enter a old password here.">
+                        Old password: <input class="form-control" type="password" required name='op' placeholder="Enter a old password here.">
                     </div>
                     <br>
                     <div class="form-group">
-                        New Password: <input class="form-control" type="password" required name="new password" placeholder="Enter a new password here.">
+                        New Password: <input class="form-control" type="password" required name="np" placeholder="Enter a new password here.">
                     </div>
                     <br>
                     <br>
@@ -151,6 +176,5 @@
             </div>
         </div>
     </div>
-    {% endblock %}
 </body>
 </html>

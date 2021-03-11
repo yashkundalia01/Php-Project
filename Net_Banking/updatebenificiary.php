@@ -18,7 +18,7 @@
   if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $query1 = 'UPDATE beneficiary SET name = "'.$_POST['ahname'].'", account_no="'.$_POST['accno'].'", bank_name = "'. $_POST['bname'].'", bank_branch = "'. $_POST['brname'].'", bank_ifsc_code = "'. $_POST['ifsc'].'"  WHERE account_no="'.$_POST['accno'].'"';
     $q=$dbhandler -> query($query1); 
-    header('location:beneficiary.php?id='.$_GET['id']);
+    header('location:beneficiary.php');
   }
 
 
@@ -62,7 +62,7 @@
                 </div>
                 <br>
                 <input type="submit" class="btn btn-success">
-                <?php echo '<a class="btn btn-danger" href="beneficiary.php?id='.$_GET['id'].'">Cancel</a>';?>
+                <?php echo '<a class="btn btn-danger" href="beneficiary.php">Cancel</a>';?>
             </form>
     
         </div>

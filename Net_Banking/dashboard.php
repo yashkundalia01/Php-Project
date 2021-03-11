@@ -1,4 +1,5 @@
 <?php
+session_start();
   require_once('connections.php');
   if ((!isset($_POST['username']) || !isset($_POST['password']))){
     header("location:login.php?message=Please enter username and password");
@@ -12,6 +13,7 @@
     $first_name = $row['first_name'];
     $last_name = $row['last_name'];
     $id = $row['id'];
+    $_SESSION['id']=$id;
     setcookie('password', $password);
     if ($_POST['password'] == $password){
 
@@ -89,8 +91,8 @@
               Payment
             </button>
             <div class="dropdown-menu">
-              <?php echo '<a class="dropdown-item" href="beneficiary.php?id='.$id.'">Fund Transfer</a>'; ?>
-              <a class="dropdown-item" href="history/{{ client.id }}">Transaction History</a>
+              <?php echo '<a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>'; ?>
+              <a class="dropdown-item" href="history.php">Transaction History</a>
               <a class="dropdown-item" href="#">Recharge</a>
               <a class="dropdown-item" href="#">UPI</a>
             </div>
@@ -142,7 +144,7 @@
               Account
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/accounts/dashboard/changepass/{{ client.id }}">Change password</a>
+              <a class="dropdown-item" href="changepassword.php">Change password</a>
               <?php echo ' <a class="dropdown-item" href="logout.php?id='.$id.'">Logout</a>'; ?>
             </div>
           </div>
