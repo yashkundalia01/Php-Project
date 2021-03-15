@@ -34,8 +34,8 @@ session_start();
     <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
       <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
       <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
-      <a href="/accounts/dashboard/beneficiary/{{ client.id }}" class="w3-bar-item w3-button">Fund Transfer</a>
-      <a href="/accounts/dashboard/history/{{ client.id }}" class="w3-bar-item w3-button">Transaction History</a>
+      <a href="beneficiary.php" class="w3-bar-item w3-button">Fund Transfer</a>
+      <a href="history.php" class="w3-bar-item w3-button">Transaction History</a>
       <a href="" class="w3-bar-item w3-button">Recharge</a>
       <a href="" class="w3-bar-item w3-button">UPI</a>
       <p></p>

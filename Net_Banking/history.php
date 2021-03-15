@@ -22,8 +22,8 @@ $query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
     <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
     <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
-    <a href="/accounts/dashboard/beneficiary/{{ client.id }}" class="w3-bar-item w3-button">Fund Transfer</a>
-    <a href="/accounts/dashboard/history/{{ client.id }}" class="w3-bar-item w3-button">Transaction History</a>
+    <a href="beneficiary.php" class="w3-bar-item w3-button">Fund Transfer</a>
+    <a href="history.php" class="w3-bar-item w3-button">Transaction History</a>
     <a href="" class="w3-bar-item w3-button">Recharge</a>
     <a href="" class="w3-bar-item w3-button">UPI</a>
     <p></p>
@@ -69,7 +69,7 @@ $query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
     <button class="w3-button w3-teal w3-black" onclick="w3_open()">☰</button>
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="/accounts/dashboard/{{ client.id }}">Home</a>
+          <a class="nav-link" href="dashboard.php">Home</a>
         </li>
         <div class="dropdown">
           <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
