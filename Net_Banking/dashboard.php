@@ -183,7 +183,7 @@ if ((!isset($_POST['username']) || !isset($_POST['password'])) && (!isset($_COOK
                 </a>
                 <div id="collapseOne" class="collapse show" data-parent="#accordion">
                   <div class="card-body">
-                    <h6 style="margin-left:10px ;">Saving - Account No: <?php echo $account_no; ?><br><br> <b>Balance :<?php echo $amount; ?> &#8377 </b></h6>
+                    <h6 style="margin-left:10px ;"><b>Account type:<font style="color:orange"> Saving</font><br><br>Account No:<font style="color:orange"> <?php echo $account_no; ?></font><br><br>Balance : <font style="color:#00FF00"><?php echo $amount; ?> &#8377 </font></b></h6>
                   </div>
                 </div>
 
