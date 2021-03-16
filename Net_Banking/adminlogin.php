@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(isset($_SESSION['username']) && isset($_SESSION['password']))
+    {
+        session_unset();
+        session_destroy();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +17,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script type="text/javascript">
+        setTimeout(function(){
+            $('#div').remove();
+        },3000);
+    </script>
 </head>
 <body>
 
@@ -25,11 +38,15 @@
         <div class="row">
             <div class="col-md-4" style="position: absolute; left:32% ;">
                 <h4 style="text-align: center;">Login</h4>
-                <?php 
-                    if (isset($_GET['message'])){
-                        echo $_GET['message'];
-                    }
-                ?>
+                <div id="div">
+                    <?php 
+                        if (isset($_GET['message']))
+                        {
+                            echo $_GET['message'];
+                        }
+                    ?>
+                </div>
+                
                 <form action="admindashboard.php" method="POST" class="p-3 shadow">
                     <div class="form-group">
                         Username: <input class="form-control" type="text" required name='uname' placeholder="Enter a username here.">

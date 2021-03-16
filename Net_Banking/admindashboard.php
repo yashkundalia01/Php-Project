@@ -9,7 +9,7 @@ session_start();
   {
       $query = "SELECT * FROM employee_details WHERE username='".$_POST['uname']."' and password='".$_POST['pword']."'";
       $RESULT = $dbhandler -> query($query);
-      if($r = $RESULT->fetch())
+      if( $r = $RESULT->fetch())
       {
           $username = $r['username'];
           $password = $r['password'];
@@ -17,7 +17,11 @@ session_start();
           $lastname = $r['lastname'];
           $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;
-      }      
+      }  
+      else
+      {
+          header("location:adminlogin.php?message=Invalid username and password");     
+      }    
   }
   elseif(!isset($_POST['uname']) && !isset($_POST['pword']) && !isset($_SESSION['username']))
   {
@@ -37,7 +41,40 @@ session_start();
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-   
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+      <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+      <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
+      <?php echo '<a class="w3-bar-item w3-button" href="beneficiary.php?id='.$id.'">Fund Transfer</a>'; ?>
+      <a href="history/{{ client.id }}" class="w3-bar-item w3-button">Transaction History</a>
+      <a href="" class="w3-bar-item w3-button">Recharge</a>
+      <a href="" class="w3-bar-item w3-button">UPI</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Quick links</b></a>
+      <a href="" class="w3-bar-item w3-button">Credit card</a>
+      <a href="" class="w3-bar-item w3-button">FD/RD</a>
+      <a href="" class="w3-bar-item w3-button">Investment</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Products</b></a>
+      <a href="" class="w3-bar-item w3-button">Loans</a>
+      <a href="" class="w3-bar-item w3-button">Credit Cards</a>
+      <a href="" class="w3-bar-item w3-button">Mutual fund</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Apply now</b></a>
+      <a href="" class="w3-bar-item w3-button">Pre approved offers</a>
+      <a href="" class="w3-bar-item w3-button">Top performing mutual funds</a>
+      <a href="" class="w3-bar-item w3-button">Express FD</a>
+      <a href="" class="w3-bar-item w3-button">Open access blog</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Services</b></a>
+      <a href="" class="w3-bar-item w3-button">Debit card</a>
+      <a href="" class="w3-bar-item w3-button">Cheque</a>
+      <a href="" class="w3-bar-item w3-button">Contact RM</a>
+      <a href="" class="w3-bar-item w3-button">My details</a>
+      <p></p>
+      <p></p>
+      
+    </div>
+    
      
     <script>
     function w3_open() {
@@ -50,6 +87,7 @@ session_start();
     </script>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <button class="w3-button w3-teal w3-black" onclick="w3_open()">☰</button>
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link " href="#">Home</a>
@@ -113,7 +151,7 @@ session_start();
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Change password</a>
-              <a class="dropdown-item" href="adminlogout.php">Logout</a>
+              <a class="dropdown-item" href="adminlogin.php?message=logout successful">Logout</a>
             </div>
           </div>
         </ul>
