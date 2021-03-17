@@ -13,8 +13,7 @@ session_start();
       {
           $username = $r['username'];
           $password = $r['password'];
-          $firstname = $r['firstname'];
-          $lastname = $r['lastname'];
+          $_SESSION['admin_name']=$r['firstname']." ".$r['lastname'];
           $_SESSION['username'] = $username;
           $_SESSION['password'] = $password;
       }  
@@ -162,7 +161,7 @@ session_start();
         }
       ?>
     <br><br>
-    <h1 style="margin-left:10px ;"><b>  Welcome <u><?php echo $firstname." ".$lastname; ?></u></b></h1><br>
+    <h1 style="margin-left:10px ;"><b>  Welcome <u><?php echo $_SESSION['admin_name']; ?></u></b></h1><br>
     <div>
       <a  class="btn btn-primary"  href="admininsert.php">CREATE</a>
       <a  class="btn btn-success"  href="info.php?operation=update">UPDATE</a>
