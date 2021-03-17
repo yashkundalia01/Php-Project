@@ -50,6 +50,7 @@ if ((!isset($_POST['username']) || !isset($_POST['password'])) && (!isset($_COOK
   <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
     <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
     <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
+	<a href="account_details.php" class="w3-bar-item w3-button">Account Details</a>
     <?php echo '<a class="w3-bar-item w3-button" href="beneficiary.php">Fund Transfer</a>'; ?>
     <a href="history.php" class="w3-bar-item w3-button">Transaction History</a>
     <a href="" class="w3-bar-item w3-button">Recharge</a>
@@ -104,6 +105,7 @@ if ((!isset($_POST['username']) || !isset($_POST['password'])) && (!isset($_COOK
               Payment
             </button>
             <div class="dropdown-menu">
+			<a class="dropdown-item" href="account_details.php">Account Details</a>
               <?php echo '<a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>'; ?>
               <a class="dropdown-item" href="history.php">Transaction History</a>
               <a class="dropdown-item" href="#">Recharge</a>

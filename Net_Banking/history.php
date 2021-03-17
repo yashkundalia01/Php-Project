@@ -22,6 +22,7 @@ $query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
     <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
     <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
+	<a href="account_details.php" class="w3-bar-item w3-button">Account Details</a>
     <a href="beneficiary.php" class="w3-bar-item w3-button">Fund Transfer</a>
     <a href="history.php" class="w3-bar-item w3-button">Transaction History</a>
     <a href="" class="w3-bar-item w3-button">Recharge</a>
@@ -76,6 +77,7 @@ $query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
             Payment
           </button>
           <div class="dropdown-menu">
+		  <a class="dropdown-item" href="account_details.php">Account Details</a>
               <a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>
               <a class="dropdown-item" href="history.php">Transaction History</a>
               <a class="dropdown-item" href="#">Recharge</a>
@@ -165,13 +167,15 @@ $query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
                         echo "<tr>";
                         echo "<td>".$row['name']."</td>";
                         echo '<td>'.$row['account_no'].'</td>';
-                        echo '<td>'.$row['amount'].'</td>';
+						if($row['operation'] == 'c' || $row['operation'] == 'C'){
+                        echo '<td><font style=color:green>'.$row['amount'].'</td>';
                         echo '<td>';
-                        if($row['operation'] == 'c' || $row['operation'] == 'C'){
-                        echo "credited";
+						echo "<font style=color:#00B31E>credited</font>";
                         }
                         else{
-                        echo "debited";
+						echo '<td><font style=color:red>'.$row['amount'].'</td>';
+                        echo '<td>';
+                        echo "<font style=color:red>debited</font>";
                         }
                         echo '</td>';
                         echo '<td>'.$row['date'].'</td>';

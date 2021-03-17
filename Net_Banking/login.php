@@ -30,7 +30,10 @@
                     <br>
                     <div class="form-group">
                         <label style="color: white;"><b>Password:</b> </label> <input class="form-control" type="password" required name="password" placeholder="Enter a password here.">
-                    </div>
+                    </div><br>
+					<div>
+					<label style="color: white;">For admin login click <a href="adminlogin.php">here</a></label>
+					</div>
                     <br>
                     <input style="margin-left: 30px;" type="submit" class="btn btn-primary">
                     <input type="reset" class="btn btn-danger" value="Cancel">

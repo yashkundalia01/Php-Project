@@ -31,40 +31,40 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-        <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-        <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
-        <a href="/accounts/dashboard/beneficiary/{{ client.id }}" class="w3-bar-item w3-button">Fund Transfer</a>
-        <a href="/accounts/dashboard/history/{{ client.id }}" class="w3-bar-item w3-button">Transaction History</a>
-        <a href="" class="w3-bar-item w3-button">Recharge</a>
-        <a href="" class="w3-bar-item w3-button">UPI</a>
-        <p></p>
-        <a href="" class="w3-bar-item w3-button"><b>Quick links</b></a>
-        <a href="" class="w3-bar-item w3-button">Credit card</a>
-        <a href="" class="w3-bar-item w3-button">FD/RD</a>
-        <a href="" class="w3-bar-item w3-button">Investment</a>
-        <p></p>
-        <a href="" class="w3-bar-item w3-button"><b>Products</b></a>
-        <a href="" class="w3-bar-item w3-button">Loans</a>
-        <a href="" class="w3-bar-item w3-button">Credit Cards</a>
-        <a href="" class="w3-bar-item w3-button">Mutual fund</a>
-        <p></p>
-        <a href="" class="w3-bar-item w3-button"><b>Apply now</b></a>
-        <a href="" class="w3-bar-item w3-button">Pre approved offers</a>
-        <a href="" class="w3-bar-item w3-button">Top performing mutual funds</a>
-        <a href="" class="w3-bar-item w3-button">Express FD</a>
-        <a href="" class="w3-bar-item w3-button">Open access blog</a>
-        <p></p>
-        <a href="" class="w3-bar-item w3-button"><b>Services</b></a>
-        <a href="" class="w3-bar-item w3-button">Debit card</a>
-        <a href="" class="w3-bar-item w3-button">Cheque</a>
-        <a href="" class="w3-bar-item w3-button">Contact RM</a>
-        <a href="" class="w3-bar-item w3-button">My details</a>
-        <p></p>
-        <p></p>
-        
-      </div>
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+      <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+      <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
+	  <a href="account_details.php" class="w3-bar-item w3-button">Account Details</a>
+      <a href="beneficiary.php" class="w3-bar-item w3-button">Fund Transfer</a>
+      <a href="history.php" class="w3-bar-item w3-button">Transaction History</a>
+      <a href="" class="w3-bar-item w3-button">Recharge</a>
+      <a href="" class="w3-bar-item w3-button">UPI</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Quick links</b></a>
+      <a href="" class="w3-bar-item w3-button">Credit card</a>
+      <a href="" class="w3-bar-item w3-button">FD/RD</a>
+      <a href="" class="w3-bar-item w3-button">Investment</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Products</b></a>
+      <a href="" class="w3-bar-item w3-button">Loans</a>
+      <a href="" class="w3-bar-item w3-button">Credit Cards</a>
+      <a href="" class="w3-bar-item w3-button">Mutual fund</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Apply now</b></a>
+      <a href="" class="w3-bar-item w3-button">Pre approved offers</a>
+      <a href="" class="w3-bar-item w3-button">Top performing mutual funds</a>
+      <a href="" class="w3-bar-item w3-button">Express FD</a>
+      <a href="" class="w3-bar-item w3-button">Open access blog</a>
+      <p></p>
+      <a href="" class="w3-bar-item w3-button"><b>Services</b></a>
+      <a href="" class="w3-bar-item w3-button">Debit card</a>
+      <a href="" class="w3-bar-item w3-button">Cheque</a>
+      <a href="" class="w3-bar-item w3-button">Contact RM</a>
+      <a href="" class="w3-bar-item w3-button">My details</a>
+      <p></p>
+      <p></p>
       
+    </div>
        
       <script>
       function w3_open() {
@@ -77,77 +77,78 @@
       </script>
   
   
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <button class="w3-button w3-teal w3-black" onclick="w3_open()">☰</button>
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="/accounts/dashboard/{{ client.id }}">Home</a>
-            </li>
-            <div class="dropdown">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                Payment
-              </button>
-              <div class="dropdown-menu">
-                  <a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <button class="w3-button w3-teal w3-black" onclick="w3_open()">☰</button>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="dashboard.php">Home</a>
+        </li>
+        <div class="dropdown">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+            Payment
+          </button>
+          <div class="dropdown-menu">
+		  <a class="dropdown-item" href="account_details.php">Account Details</a>
+              <a class="dropdown-item" href="beneficiary.php">Fund Transfer</a>
               <a class="dropdown-item" href="history.php">Transaction History</a>
-                  <a class="dropdown-item" href="#">Recharge</a>
-                  <a class="dropdown-item" href="#">UPI</a>
-                </div>
+              <a class="dropdown-item" href="#">Recharge</a>
+              <a class="dropdown-item" href="#">UPI</a>
             </div>
-            <div class="dropdown">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                Quick links
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Credit card</a>
-                <a class="dropdown-item" href="#">FD/RD</a>
-                <a class="dropdown-item" href="#">Investment</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                Products
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Loans</a>
-                <a class="dropdown-item" href="#">Credit card</a>
-                <a class="dropdown-item" href="#">Mutual fund</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                Apply now
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Pre approved offers</a>
-                <a class="dropdown-item" href="#">Top performing mutual funds</a>
-                <a class="dropdown-item" href="#">Open access blog</a>
-                <a class="dropdown-item" href="#">Express FD</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                Services
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Debit card</a>
-                <a class="dropdown-item" href="#">Cheque</a>
-                <a class="dropdown-item" href="#">Contact RM</a>
-                <a class="dropdown-item" href="#">My details</a>
-              </div>
-            </div>
-            <div class="dropdown">
-              <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-                Account
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Change password</a>
-                <a class="dropdown-item" href="/accounts/dashboard/logout ">Logout</a>
-              </div>
-            </div>
-          
-          </ul>
-        </nav>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+            Quick links
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Credit card</a>
+            <a class="dropdown-item" href="#">FD/RD</a>
+            <a class="dropdown-item" href="#">Investment</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+            Products
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Loans</a>
+            <a class="dropdown-item" href="#">Credit card</a>
+            <a class="dropdown-item" href="#">Mutual fund</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+            Apply now
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Pre approved offers</a>
+            <a class="dropdown-item" href="#">Top performing mutual funds</a>
+            <a class="dropdown-item" href="#">Open access blog</a>
+            <a class="dropdown-item" href="#">Express FD</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+            Services
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Debit card</a>
+            <a class="dropdown-item" href="#">Cheque</a>
+            <a class="dropdown-item" href="#">Contact RM</a>
+            <a class="dropdown-item" href="#">My details</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
+            Account
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Change password</a>
+            <?php echo '<a class="dropdown-item" href="logout.php">Logout</a>' ?>
+          </div>
+        </div>
+      
+      </ul>
+    </nav>
 
         <div class="container-fluid">
             <h1 style="text-align: center;"><span class="badge bg-dark">Change Password</span></h1>

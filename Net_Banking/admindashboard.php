@@ -164,9 +164,9 @@ session_start();
     <br><br>
     <h1 style="margin-left:10px ;"><b>  Welcome <u><?php echo $firstname." ".$lastname; ?></u></b></h1><br>
     <div>
-      <a href="admininsert.php"><button>CREATE</button></a>
-      <a href="info.php?operation=update"><button>UPDATE</button></a>
-      <a href="info.php?operation=delete"><button>DELETE</button></a>
+      <a  class="btn btn-primary"  href="admininsert.php">CREATE</a>
+      <a  class="btn btn-success"  href="info.php?operation=update">UPDATE</a>
+      <a  class="btn btn-danger"  href="info.php?operation=delete">DELETE</a>
     </div>
 
 </body>
