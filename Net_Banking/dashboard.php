@@ -197,7 +197,7 @@ if ((!isset($_POST['username']) || !isset($_POST['password'])) && (!isset($_COOK
                 </a>
                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
                   <div class="card-body">
-                    Write here
+                  Click <a href="">here</a> to apply now.
                   </div>
                 </div>
 
@@ -209,7 +209,7 @@ if ((!isset($_POST['username']) || !isset($_POST['password'])) && (!isset($_COOK
                 </a>
                 <div id="collapseThree" class="collapse" data-parent="#accordion">
                   <div class="card-body">
-                    Write here
+                  Click <a href="">here</a> to apply now.
                   </div>
                 </div>
 
@@ -221,7 +221,7 @@ if ((!isset($_POST['username']) || !isset($_POST['password'])) && (!isset($_COOK
                 </a>
                 <div id="collapseFour" class="collapse" data-parent="#accordion">
                   <div class="card-body">
-                    Write here
+                    Click <a href="">here</a> to apply now.
                   </div>
                 </div>
 

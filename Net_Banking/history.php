@@ -2,7 +2,7 @@
   require_once('connections.php');
   session_start();
 
-$query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
+$query = "SELECT * FROM history WHERE client_id=".$_SESSION['id']." ORDER BY date DESC" ;
   $RESULT = $dbhandler -> query($query);
   $rows = $RESULT->fetchAll();
 ?>
@@ -167,7 +167,7 @@ $query = "SELECT * FROM history WHERE client_id=".$_SESSION['id'];
                         echo "<tr>";
                         echo "<td>".$row['name']."</td>";
                         echo '<td>'.$row['account_no'].'</td>';
-						if($row['operation'] == 'c' || $row['operation'] == 'C'){
+						if($row['operation'] == 'credited' || $row['operation'] == 'Credited'){
                         echo '<td><font style=color:green>'.$row['amount'].'</td>';
                         echo '<td>';
 						echo "<font style=color:#00B31E>credited</font>";

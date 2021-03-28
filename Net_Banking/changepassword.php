@@ -15,6 +15,12 @@
   else{
     $query = "UPDATE client SET Password='".$_POST['np']."' WHERE id=".$_SESSION['id'];
     $q=$dbhandler -> query($query); 
+    setcookie('password', null);
+    setcookie('username', null);
+    session_start();
+    session_unset();
+    session_destroy();
+    header('location:login.php');
     header('location:login.php?message=password changed successfully');
   }
   }
