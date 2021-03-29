@@ -40,116 +40,25 @@ session_start();
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
-    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
-      <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-      <a href="" class="w3-bar-item w3-button"><b>Payment</b></a>
-      <?php echo '<a class="w3-bar-item w3-button" href="beneficiary.php?id='.$id.'">Fund Transfer</a>'; ?>
-      <a href="history/{{ client.id }}" class="w3-bar-item w3-button">Transaction History</a>
-      <a href="" class="w3-bar-item w3-button">Recharge</a>
-      <a href="" class="w3-bar-item w3-button">UPI</a>
-      <p></p>
-      <a href="" class="w3-bar-item w3-button"><b>Quick links</b></a>
-      <a href="" class="w3-bar-item w3-button">Credit card</a>
-      <a href="" class="w3-bar-item w3-button">FD/RD</a>
-      <a href="" class="w3-bar-item w3-button">Investment</a>
-      <p></p>
-      <a href="" class="w3-bar-item w3-button"><b>Products</b></a>
-      <a href="" class="w3-bar-item w3-button">Loans</a>
-      <a href="" class="w3-bar-item w3-button">Credit Cards</a>
-      <a href="" class="w3-bar-item w3-button">Mutual fund</a>
-      <p></p>
-      <a href="" class="w3-bar-item w3-button"><b>Apply now</b></a>
-      <a href="" class="w3-bar-item w3-button">Pre approved offers</a>
-      <a href="" class="w3-bar-item w3-button">Top performing mutual funds</a>
-      <a href="" class="w3-bar-item w3-button">Express FD</a>
-      <a href="" class="w3-bar-item w3-button">Open access blog</a>
-      <p></p>
-      <a href="" class="w3-bar-item w3-button"><b>Services</b></a>
-      <a href="" class="w3-bar-item w3-button">Debit card</a>
-      <a href="" class="w3-bar-item w3-button">Cheque</a>
-      <a href="" class="w3-bar-item w3-button">Contact RM</a>
-      <a href="" class="w3-bar-item w3-button">My details</a>
-      <p></p>
-      <p></p>
-      
-    </div>
-    
-     
-    <script>
-    function w3_open() {
-      document.getElementById("mySidebar").style.display = "block";
-    }
-    
-    function w3_close() {
-      document.getElementById("mySidebar").style.display = "none";
-    }
-    </script>
-
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <button class="w3-button w3-teal w3-black" onclick="w3_open()">☰</button>
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link " href="#">Home</a>
+            <a class="nav-link " href="">Home</a>
           </li>
-          <div class="dropdown">
-            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-              Payment
-            </button>
-            <div class="dropdown-menu">
-              <?php echo '<a class="dropdown-item" href="beneficiary.php?id='.$id.'">Fund Transfer</a>'; ?>
-              <a class="dropdown-item" href="history/{{ client.id }}">Transaction History</a>
-              <a class="dropdown-item" href="#">Recharge</a>
-              <a class="dropdown-item" href="#">UPI</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-              Quick links
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Credit card</a>
-              <a class="dropdown-item" href="#">FD/RD</a>
-              <a class="dropdown-item" href="#">Investment</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-              Products
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Loans</a>
-              <a class="dropdown-item" href="#">Credit card</a>
-              <a class="dropdown-item" href="#">Mutual fund</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-              Apply now
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Pre approved offers</a>
-              <a class="dropdown-item" href="#">Top performing mutual funds</a>
-              <a class="dropdown-item" href="#">Open access blog</a>
-              <a class="dropdown-item" href="#">Express FD</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
-              Services
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Debit card</a>
-              <a class="dropdown-item" href="#">Cheque</a>
-              <a class="dropdown-item" href="#">Contact RM</a>
-              <a class="dropdown-item" href="#">My details</a>
-            </div>
-          </div>
+          <li class="nav-item active">
+            <a class="nav-link " href="admininsert.php">Create</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link " href="info.php?operation=update">Update</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link " href="info.php?operation=delete">Delete</a>
+          </li>
           <div class="dropdown">
             <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
               Account
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Change password</a>
               <a class="dropdown-item" href="adminlogin.php?message=logout successful">Logout</a>
             </div>
           </div>
